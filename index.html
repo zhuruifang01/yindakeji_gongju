@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="js/jquery.min.js"></script>
+    <title>音达科技——工具汇总</title>
+    <style>
+        body,html{
+            width:100%;height:100%;margin:0;padding:0;
+            color:#0edbd8;
+            background:url("img/bg.png");
+            background-repeat:no-repeat;
+            background-size:100% 100%;
+            overflow:hidden;
+            font-size:18px;
+        }
+        ul,li{
+            list-style:none;
+            margin:0;padding:0;
+        }
+        a{
+            text-decoration:none;
+        }
+        .header{
+            width:85%;
+            height:80px;
+            margin:0 auto;
+            background:#ccc;
+            background:url("img/logo.png");
+            background-repeat:no-repeat;
+            background-size:100% 100%;
+        }
+        .header div{
+            width:300px;
+            height:80px;
+            line-height:95px;
+            text-align:center;
+            float:left;
+        }
+        .header #show{
+            float:right;
+        }
+        .left{
+            width:200px;
+            height:82%;
+            margin-left:50px;
+            margin-top:10px;
+            background:url("img/left.png");
+            background-repeat:no-repeat;
+            background-size:100% 100%;
+        }
+        .left .yiji{
+            width:150px;
+            height:50px;
+            padding-left:5px;
+            background:url("img/icon.png");
+            background-repeat:no-repeat;
+            background-size:100% 100%;
+            margin-bottom:10px;
+            line-height:70px;
+            text-align:center;
+            cursor:pointer;
+        }
+        .left .erji li{
+            width:100%;
+            height:50px;
+            line-height:50px;
+            padding-left:15px;
+            box-sizing:border-box;
+            cursor:pointer;
+        }
+        .left .erji .erjicon:hover{
+            background:#0edbd8;
+            color:#fff;
+            text-align:center;
+            font-size:19px;
+            font-weight:bold;
+        }
+        .active{
+            background:#0edbd8;
+            color:#fff;
+        }
+        .left .erji .sanji li{
+            padding-left:35px;
+        }
+        .left .erji .sanji li a{
+            color:#0edbd8;
+        }
+        .left .erji .sanji li a:hover{
+            font-weight:bold;
+        }
+        .left .erji,.left .erji .sanji{
+            display:none;
+        }
+    </style>
+</head>
+<body>
+     <div class="header">
+         <div class="aa">移动／联通／电信的工具整合</div>
+         <div id="show"></div>
+     </div>
+     <div class="left">
+            <ul class="yiji">国内地区</ul>
+            <ul class="erji">
+                    <li class="erjicon">上海</li>
+                    <ul class="sanji">
+                        <li><a href="">工程项目</a></li>
+                        <li><a href="">网优项目</a></li>
+                    </ul>
+                    <li class="erjicon">宁波</li>
+                    <ul class="sanji">
+                        <li><a href="">工程项目</a></li>
+                        <li><a href="">网优项目</a></li>
+                    </ul>
+            </ul>
+
+            <ul class="yiji">国外地区</ul>
+            <ul class="erji">
+                    <li class="erjicon">菲律宾</li>
+                    <ul class="sanji">
+                        <li><a href="">工程项目</a></li>
+                        <li><a href="">网优项目</a></li>
+                    </ul>
+            </ul>
+     </div>
+</body>
+<script>
+
+    $(function(){
+        //时间日期：
+        function currentTime(){
+            var d=new Date(),str='';
+            str+=d.getFullYear()+'.';
+            str+=d.getMonth() + 1+'.';
+            str+=d.getDate()+'  ';
+            str+=d.getHours()+':';
+            str+=d.getMinutes()+':';
+            str+= d.getSeconds()+'';
+            return str;
+        }
+        setInterval(function(){$('#show').html(currentTime)},1000);
+        //树:
+        $(".yiji").click(function(){
+              var index=$(this).index(".yiji");
+              $(".erji").eq(index).slideToggle();
+        });
+        $(".erjicon").click(function(){
+              var index=$(this).index(".erjicon");
+              $(".erjicon").removeClass('active');
+              $(".erjicon").eq(index).addClass('active');
+              $(".sanji").eq(index).slideToggle();
+        });
+    });
+
+</script>
+</html>
